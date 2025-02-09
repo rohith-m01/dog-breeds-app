@@ -1,0 +1,23 @@
+<div *ngFor = "let toDo of toDos">
+
+<p> Number : {{toDo.id}}</p>
+<p> ToDo : {{toDo.toDo}}</p>
+<p> Completed : {{toDo.completed}}</p>
+<p> User ID : {{toDo.userId}}</p>
+
+</div>
+
+
+<!-- Form to add a new Todo -->
+<div>
+    <label for="newToDo">Task Description:</label>
+    <input id="newToDo" [(ngModel)]="newToDo" placeholder="Enter new todo" />
+  
+    <label for="completed">Completed (true/false):</label>
+    <input id="completed" [(ngModel)]="newCompleted" placeholder="Enter true or false" />
+  
+    <label for="userId">User ID:</label>
+    <input id="userId" [(ngModel)]="newUserId" placeholder="Enter User ID" type="number" />
+  
+    <button (click)="addToDo()">Add Todo</button>
+</div>

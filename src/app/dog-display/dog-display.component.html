@@ -1,0 +1,54 @@
+<!-- Title section -->
+<div class="title">
+    <h2>Dog Breeds</h2>
+</div>
+
+<!-- Main content section -->
+<div class="content">
+    <!-- First half -->
+    <div class="first-half">
+        <div class="half">
+            <div style="display: block; width: 80%;">
+                <canvas baseChart [data]="chartData" [options]="chartOptions" chartType="bar">
+                </canvas>
+            </div>
+        </div>
+        <div class="half">
+            <div class="toggle-container">
+                <button class="toggle-btn" (click)="selectGender('male')"
+                    [class.active]="selectedGender === 'male'">Male</button>
+                <button class="toggle-btn" (click)="selectGender('female')"
+                    [class.active]="selectedGender === 'female'">Female</button>
+            </div>
+            <div *ngIf="selectedGender === 'male'" style="display: block; width: 80%;">
+                <canvas baseChart [data]="weightChartData" [options]="weightChartOptions" chartType="bar">
+                </canvas>
+            </div>
+            <div *ngIf="selectedGender === 'female'" style="display: block; width: 80%;">
+                <canvas baseChart [data]="chartDataForFemaleWeight" [options]="chartOptionsForFemaleWeight"
+                    chartType="bar">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <!-- Second half -->
+    <div class="second-half">
+        <!-- Search input field -->
+        <div style="margin-top: 10px; margin-left: 22px;">
+            <label for="search">Search Breeds : </label>
+            <input type="text" id="search" [(ngModel)]="searchQuery" (input)="filterBreeds()"
+                placeholder="Search by breed name" />
+        </div>
+
+        <!-- Display the filtered dog breeds -->
+        <div *ngFor="let breed of filteredBreeds" class="dog-breeds">
+            <h3>{{ breed.name }}</h3>
+            <p><strong>Description:</strong> {{ breed.description }}</p>
+            <p><strong>Life Expectancy:</strong> {{ breed.lifeMin }} - {{ breed.lifeMax }} years</p>
+            <p><strong>Male Weight Range:</strong> {{ breed.maleWeightMin }} - {{ breed.maleWeightMax }} kg</p>
+            <p><strong>Female Weight Range:</strong> {{ breed.femaleWeightMin }} - {{ breed.femaleWeightMax }} kg</p>
+            <p><strong>Hypoallergenic:</strong> {{ breed.hypoallergenic ? 'Yes' : 'No' }}</p>
+        </div>
+
+    </div>
+</div>

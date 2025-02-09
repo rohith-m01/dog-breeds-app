@@ -1,0 +1,51 @@
+<div *ngFor = "let ob of obj">
+    <p>{{ob.id}}</p>
+    <p>{{ob.name}}</p>
+    <p>{{ob.color}}</p>
+
+    <!-- Update Button -->
+  <button (click)="onEdit(ob)">Edit</button>
+
+  <!-- Conditionally display the update form -->
+  <div *ngIf="editingProduct && editingProduct.id === ob.id">
+    <input [(ngModel)]="editingProduct.name" placeholder="Edit Name" />
+    <input [(ngModel)]="editingProduct.color" placeholder="Edit Color" />
+    <button (click)="onUpdate(editingProduct)">Save</button>
+    <button (click)="onCancel()">Cancel</button>
+  </div>
+
+    <button (click)="deleteStuff(ob.id)">Delete</button>
+</div>
+
+<div>
+    <form (ngSubmit)="sendStuff()" #productForm="ngForm">
+
+        <div>
+            <label for="name">Product Name : </label>
+            <input type="text" name="name" id="name" [(ngModel)] = "productList.name" required />
+        </div>
+
+        <div>
+            <label for="year">Product Year : </label>
+            <input type="number" name="year" id="year" [(ngModel)] = "productList.data.year" required />
+        </div>
+
+        <div>
+            <label for="price">Product Price : </label>
+            <input type="number" name="price" id="price" [(ngModel)] = "productList.data.price" required />
+        </div>
+
+        <div>
+            <label for="cpu">CPU Model : </label>
+            <input type="text" name="cpu" id="cpu" [(ngModel)] = "productList.data['CPU model']" required />
+        </div>
+
+        <div>
+            <label for="size">Hard disk size : </label>
+            <input type="text" name="size" id="size" [(ngModel)] = "productList.data['Hard disk size']" required />
+        </div>
+
+        <button type="submit" [disabled] = "!productForm.form.valid">SUBMIT</button>
+
+    </form>
+</div>

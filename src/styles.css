@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* body {
+    background-image: '/assets/crumpled-paper.jpg';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  } */
+
+
+  body {
+    background-color: #f3f3f3; /* A light paper-like color */
+    background-image: 
+      radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
